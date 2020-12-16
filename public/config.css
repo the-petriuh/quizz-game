@@ -1,0 +1,105 @@
+* , *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+:root {
+  --ff-primary: 'Source Sans Pro', sans-serif;
+
+  --bg-dark: #e8e8f8;
+  --bg-light: #fdf9ff;
+
+  --clr-heading: #03071e;
+  --clr-txt: #272838;
+
+  --clr-border: rgba(0,0,0,.2);
+
+  --fs-h1: 2.5em;
+  --fs-h2: 1.5em;
+  --fs-h3: 1.25em;
+  --fs-txt: 1.1em;
+
+  --fw-reg: 300;
+  --fw-bold: 400;
+  --fw-bolder: 600;
+
+  --aside-wth: 250px;
+
+  --skin-color: #71e30e;
+}
+
+/* main styles */
+
+html { scroll-behavior: smooth; }
+
+body{
+  height: 100%;
+  line-height: 1.5;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-txt);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul { list-style: none; }
+
+a { text-decoration: none; }
+button { cursor: pointer; border: none; }
+
+hr {
+  width: 80%;
+  border-top: 2px solid var(--clr-border);
+}
+
+footer { text-align: center; }
+
+/* typography */
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+p, span { font-size: var(--fs-txt); }
+h1, h2, h3, p, span, a, i { color: var(--clr-txt) }
+
+/* general classes */
+
+.centralize {
+  display: grid;
+  place-items: center;
+}
+
+.txt-center { text-align: center; }
+/* .m-auto { margin: 0 auto; } */
+.hover-txt-theme { transition: color 200ms; }
+.hover-txt-theme:hover { color: var(--skin-color); }
+
+.flex-row { display: flex; }
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-white { background-color: #fff; }
+.bg-night { background-color: #272838; }
+
+.bg-theme { background-color: var(--bg-light); }
+.txt-clr-theme { color: var(--clr-txt); }
+
+/* .justify-content-start { justify-content: flex-start; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-evenly { justify-content: space-evenly; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; } */
+
+.simple-title {
+  font-weight: var(--fw-reg);
+  color: var(--clr-txt);
+  padding: .5em 0;
+}
