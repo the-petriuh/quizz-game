@@ -8,25 +8,9 @@ import './Quizz.css';
 function Quizz() {
 
   const [ currentQuestion, setCurrentQuestion ] = useState(0);
-  const [ nextDisabled, setNextDisabled ] = useState(true);
-  const [ isOptionsDisabled, setIsOptionsDisabled ] = useState(false);
 
   function changeQuestion() {
     setCurrentQuestion(prevQuestion => prevQuestion + 1);
-    setNextDisabled(true);
-    setIsOptionsDisabled(false);
-  }
-
-  function checkRightOption(SelectOptionIndex) {
-    const rightOption = quizzData.questions[currentQuestion].asnwer;
-    if (SelectOptionIndex === rightOption) {
-      alert("right asnwer")
-    } else {
-      alert('wrong asnwer');
-    }
-
-    setNextDisabled(false);
-    setIsOptionsDisabled(true);
   }
 
   function restart() {
@@ -37,8 +21,7 @@ function Quizz() {
     return (
       <Question
         key={question.id}
-        checkRightOption={checkRightOption}
-        isOptionsDisabled={isOptionsDisabled}
+        changeQuestion={changeQuestion}
         {...question}
       />
     );
@@ -51,16 +34,6 @@ function Quizz() {
           <EndingScreen restart={restart}/>
         : questions[currentQuestion]
       }
-
-      <button
-        type="button"
-        disabled={nextDisabled}
-        className="btn btn-primary"
-        id="btn-next"
-        onClick={changeQuestion}
-      >
-        Next
-      </button>
     </div>
   );
 }

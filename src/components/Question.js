@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Question.css';
 
 function Question(props) {
 
+  const [ nextDisabled, setNextDisabled ] = useState(true);
+  const [ isOptionsDisabled, setIsOptionsDisabled ] = useState(false);
+
+  function checkRightOption(selectedOptionIndex) {
+    const rightOption = props.asnwer;
+    const btns = document.querySelectorAll('#option-btn');
+
+    btns[rightOption].className = "question-option btn btn-success";
+
+    if (selectedOptionIndex !== rightOption) {
+      btns[selectedOptionIndex].className = "question-option btn btn-danger";
+    }
+
+    setNextDisabled(false);
+    setIsOptionsDisabled(true);
+  }
+
   const questionOptions = props.options.map((opt, index) => {
     return (
       <button
         key={index}
-        onClick={() => { props.checkRightOption(index) }}
+        onClick={() => { checkRightOption(index) }}
         type="button"
+        id="option-btn"
         className="question-option btn btn-primary"
-        disabled={props.isOptionsDisabled}>
+        disabled={isOptionsDisabled}>
       {opt}
       </button>
     )
@@ -25,6 +43,17 @@ function Question(props) {
         {questionOptions}
       
       </div>
+      <br/>
+      <button
+        type="button"
+        disabled={nextDisabled}
+        className="btn btn-primary"
+        id="btn-next"
+        onClick={props.changeQuestion}
+      >
+        Next
+      </button>
+
     </div>
   );
 }
